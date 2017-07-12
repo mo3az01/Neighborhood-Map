@@ -1,0 +1,41 @@
+<style>
+
+body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+#map {
+	height: 600px;
+	width: 70%;
+}
+.container {
+	display: flex;
+}
+.leftPanel {
+	width: 27%;
+	text-align: center;
+	margin-right: 3%;
+}
+ul {
+    margin-bottom: 14px;
+    list-style: none;
+}
+li { 
+	width: 100%;  
+	margin: 0 0 5px 0; 
+	background: #F7F5F2;
+	font-size: 3vmin;
+	color: #333;
+	text-decoration: none;
+}
+li:hover { background-color: #EFEFEF; }
+
+input::placeholder {
+  width: 100%;  
+  font-size: 2vmin;
+  color: red;
+  text-align: center;
+}
+
+</style>

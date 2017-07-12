@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Neighborhood Map</title>
+     <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    
+    <link rel="stylesheet" href="css/style.css">
+
+    <script type="text/javascript" src='    https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    
+
+    <script src='lib/knockout-3.4.0.js'></script>
+    
+    <script type="text/javascript" src='js/app.js'></script>
+
+
+</head>
+
+<body>
+	<div class='container'>
+	<div class ='leftPanel'>
+        <input  placeholder="Filter List" data-bind="textInput: filter">
+
+        <ul data-bind="foreach:filteredMarkers">
+        	<li class="list-group-item" data-bind="click:triggerClick,text: $data.marker.title"></li>
+        </ul>
+    </div>
+	<div id="map"></div>
+    </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW4HX6j50ptvJxe5TZszr_QqVWxURbVXo&callback=initMap"
+    ></script>
+
+
+</body>
+
+</html>
