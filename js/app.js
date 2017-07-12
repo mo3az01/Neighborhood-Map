@@ -110,7 +110,7 @@ var ClubMarker = function(club){
 */
 var viewModel = function(){
 	var self = this;
-	self.markers = [];
+	self.markers = ko.observableArray([]);
 	sportsClubs.forEach(function(club){
 		self.markers.push(new ClubMarker(club));
 	});
