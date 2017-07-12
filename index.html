@@ -12,9 +12,6 @@
     
 
     <script src='lib/knockout-3.4.0.js'></script>
-    
-    <script type="text/javascript" src='js/app.js'></script>
-
 
 </head>
 
@@ -29,7 +26,8 @@
     </div>
 	<div id="map"></div>
     </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW4HX6j50ptvJxe5TZszr_QqVWxURbVXo&callback=initMap"
+    <script type="text/javascript" src='js/app.js'></script>
+    <script async defer onerror="googleMapError()" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW4HX6j50ptvJxe5TZszr_QqVWxURbVXo&callback=initMap"
     ></script>
 
 

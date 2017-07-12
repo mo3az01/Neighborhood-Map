@@ -18,27 +18,27 @@ function initMap() {
 * get all sports clubs from foursquare
 */
 function getSportsClubs(){
-            $.ajax({
-            	url:"https://api.foursquare.com/v2/venues/search?",
-                dataType:"json",
-                data:{
-                	client_id: "YNDU5NPUGZCBGH5KM4RG5HVXNIWRN4WBL3CSY1KRZC0Q1X0C",
-	                client_secret: "KNPQ1QPT41WFFZUF5BPCRSZL11IJHQA5BV40FUFZYPNH2M54",	                
-	                v: 20170712,
-	                ll: mapCenter.lat+","+mapCenter.lng,
-	                query:"Sports Club",
-	                limit:20
-	            },
-				success: function(json) {
-					json.response.venues.forEach(function(club){
-						sportsClubs.push({id:club.id,name:club.name,lat:club.location.lat,lng:club.location.lng});						
-					});
-					ko.applyBindings(new viewModel());
-            	},
-            	error: function(){
-            		alert('Error.... No Data available, Check your connection!!');
-            	}
-            });
+    $.ajax({
+    	url:"https://api.foursquare.com/v2/venues/search?",
+        dataType:"json",
+        data:{
+        	client_id: "YNDU5NPUGZCBGH5KM4RG5HVXNIWRN4WBL3CSY1KRZC0Q1X0C",
+            client_secret: "KNPQ1QPT41WFFZUF5BPCRSZL11IJHQA5BV40FUFZYPNH2M54",	                
+            v: 20170712,
+            ll: mapCenter.lat+","+mapCenter.lng,
+            query:"Sports Club",
+            limit:20
+        },
+		success: function(json) {
+			json.response.venues.forEach(function(club){
+				sportsClubs.push({id:club.id,name:club.name,lat:club.location.lat,lng:club.location.lng});						
+			});
+			ko.applyBindings(new viewModel());
+    	},
+    	error: function(){
+    		alert('Error.... No Data available, Check your connection!!');
+    	}
+    });
 
 }
 /**
@@ -77,24 +77,24 @@ var ClubMarker = function(club){
 	* display Info window
 	*/
     function displayInfoWindow(){
-    	    infowindow.close();
-            $.ajax({
-            	url:"https://api.foursquare.com/v2/venues/"+self.id,
-                dataType:"json",
-                data:{
-                	client_id: "YNDU5NPUGZCBGH5KM4RG5HVXNIWRN4WBL3CSY1KRZC0Q1X0C",
-	                client_secret: "KNPQ1QPT41WFFZUF5BPCRSZL11IJHQA5BV40FUFZYPNH2M54",	                
-	                v: 20170712,
-	            },
-				success: function(json) {					
-	                infowindow.setContent('<p> <h2>' + self.name + '</h1></p>' + '<p><a href="'+json.response.venue.shortUrl+'">'+ json.response.venue.shortUrl +'</a></p>');
-	                infowindow.open(map, self.marker);
-            	},
-            	error: function(){
-            		 infowindow.setContent('<p> Error... no data</p>');
-            		 infowindow.open(map, self.marker);	
-            	}
-            });
+	    infowindow.close();
+	    $.ajax({
+	    	url:"https://api.foursquare.com/v2/venues/"+self.id,
+	        dataType:"json",
+	        data:{
+	        	client_id: "YNDU5NPUGZCBGH5KM4RG5HVXNIWRN4WBL3CSY1KRZC0Q1X0C",
+	            client_secret: "KNPQ1QPT41WFFZUF5BPCRSZL11IJHQA5BV40FUFZYPNH2M54",	                
+	            v: 20170712,
+	        },
+			success: function(json) {					
+	            infowindow.setContent('<p> <h2>' + self.name + '</h1></p>' + '<p><a href="'+json.response.venue.shortUrl+'">'+ json.response.venue.shortUrl +'</a></p>');
+	            infowindow.open(map, self.marker);
+	    	},
+	    	error: function(){
+	    		 infowindow.setContent('<p> Error... no data</p>');
+	    		 infowindow.open(map, self.marker);	
+	    	}
+	    });
             
     }
 
@@ -110,7 +110,7 @@ var ClubMarker = function(club){
 */
 var viewModel = function(){
 	var self = this;
-	self.markers = ko.observableArray([]);
+	self.markers = [];
 	sportsClubs.forEach(function(club){
 		self.markers.push(new ClubMarker(club));
 	});
